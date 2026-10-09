@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --fundo: #faf7f2;
+  --superficie: #ffffff;
+  --texto: #1f1b16;
+  --suave: #6b635a;
+  --borda: #e8e1d6;
+  --marca: #c2410c;
+  --marca-forte: #9a3412;
+  --marca-fundo: #fff1e6;
+  --ok: #15803d;
+  --ok-fundo: #ecfdf3;
+  --perigo: #b91c1c;
+  --perigo-fundo: #fef2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #15120f;
+    --superficie: #1f1b17;
+    --texto: #f3eee7;
+    --suave: #a89f94;
+    --borda: #35302a;
+    --marca: #fb923c;
+    --marca-forte: #fdba74;
+    --marca-fundo: #2c1a0e;
+    --ok: #4ade80;
+    --ok-fundo: #0f2a19;
+    --perigo: #f87171;
+    --perigo-fundo: #2d1414;
+  }
+}
+
+@theme inline {
+  --color-fundo: var(--fundo);
+  --color-superficie: var(--superficie);
+  --color-texto: var(--texto);
+  --color-suave: var(--suave);
+  --color-borda: var(--borda);
+  --color-marca: var(--marca);
+  --color-marca-forte: var(--marca-forte);
+  --color-marca-fundo: var(--marca-fundo);
+  --color-ok: var(--ok);
+  --color-ok-fundo: var(--ok-fundo);
+  --color-perigo: var(--perigo);
+  --color-perigo-fundo: var(--perigo-fundo);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer components {
+  .campo {
+    @apply w-full rounded-xl border border-borda bg-superficie px-3 py-2.5 text-base text-texto outline-none placeholder:text-suave focus:border-marca focus:ring-2 focus:ring-marca/20;
+  }
+  .rotulo {
+    @apply mb-1 block text-sm font-medium text-texto;
+  }
+  .botao {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-marca px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-marca-forte disabled:opacity-60 dark:text-black;
+  }
+  .botao-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-borda bg-superficie px-4 py-2.5 text-sm font-semibold text-texto transition hover:border-marca disabled:opacity-60;
+  }
+  .botao-perigo {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-perigo/40 bg-perigo-fundo px-4 py-2.5 text-sm font-semibold text-perigo transition hover:border-perigo disabled:opacity-60;
+  }
+  .cartao {
+    @apply rounded-2xl border border-borda bg-superficie p-4;
+  }
+  .etiqueta {
+    @apply inline-flex items-center rounded-full bg-marca-fundo px-2.5 py-0.5 text-xs font-medium text-marca-forte;
+  }
+}
